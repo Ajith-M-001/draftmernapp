@@ -17,6 +17,7 @@ import EditNoteIcon from "@mui/icons-material/EditNote";
 import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
 import Brightness2OutlinedIcon from "@mui/icons-material/Brightness2Outlined";
 import { useTheme } from "@emotion/react";
+import { Outlet } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -166,140 +167,141 @@ export default function PrimarySearchAppBar({ toggleTheme, isDarkMode }) {
   // );
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" color="inherit" elevation={0}>
-        <Toolbar>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{
-              fontSize: {
-                xs: theme.typography.fontSizes.sm,
-                sm: theme.typography.fontSizes.xl,
-              },
-              display: {
-                xs: "block",
-                fontFamily: "'Pacifico', cursive",
-              },
-            }}
-          >
-            Blogify
-          </Typography>
-          <Search
-            sx={{
-              borderRadius: "30px",
-              display: {
-                xs: "none",
-                md: "block",
-              },
-            }}
-          >
-            <SearchIconWrapper sx={{ color: "grey", zIndex: 50 }}>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
+    <>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static" color="inherit" elevation={0}>
+          <Toolbar>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{
+                fontSize: {
+                  xs: theme.typography.fontSizes.sm,
+                  sm: theme.typography.fontSizes.xl,
+                },
+                display: {
+                  xs: "block",
+                  fontFamily: "'Pacifico', cursive",
+                },
+              }}
+            >
+              Blogify
+            </Typography>
+            <Search
               sx={{
                 borderRadius: "30px",
-              }}
-            />
-          </Search>
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <IconButton
-              size="large"
-              aria-label="show 4 new mails"
-              color="inherit"
-              sx={{
-                display: { md: "flex", xs: "none" },
-                "& .MuiSvgIcon-root": {
-                  fontSize: {
-                    xs: theme.typography.fontSizes.xl,
-                    sm: theme.typography.fontSizes["2xl"],
-                  },
+                display: {
+                  xs: "none",
+                  md: "block",
                 },
               }}
             >
-              <EditNoteIcon />
-              <Typography>Write</Typography>
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="search"
-              color="inherit"
-              onClick={handleMobileSearchClick}
-              sx={{
-                display: { md: "none" },
-                "& .MuiSvgIcon-root": {
-                  fontSize: {
-                    xs: theme.typography.fontSizes.xl,
-                    sm: theme.typography.fontSizes["2xl"],
+              <SearchIconWrapper sx={{ color: "grey", zIndex: 50 }}>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ "aria-label": "search" }}
+                sx={{
+                  borderRadius: "30px",
+                }}
+              />
+            </Search>
+            <Box sx={{ flexGrow: 1 }} />
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <IconButton
+                size="large"
+                aria-label="show 4 new mails"
+                color="inherit"
+                sx={{
+                  display: { md: "flex", xs: "none" },
+                  "& .MuiSvgIcon-root": {
+                    fontSize: {
+                      xs: theme.typography.fontSizes.xl,
+                      sm: theme.typography.fontSizes["2xl"],
+                    },
                   },
-                },
-              }}
-            >
-              <SearchIcon />
-            </IconButton>
-            <IconButton
-              onClick={toggleTheme}
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-              sx={{
-                "& .MuiSvgIcon-root": {
-                  fontSize: {
-                    xs: theme.typography.fontSizes.xl,
-                    sm: theme.typography.fontSizes["2xl"],
+                }}
+              >
+                <EditNoteIcon />
+                <Typography>Write</Typography>
+              </IconButton>
+              <IconButton
+                size="large"
+                aria-label="search"
+                color="inherit"
+                onClick={handleMobileSearchClick}
+                sx={{
+                  display: { md: "none" },
+                  "& .MuiSvgIcon-root": {
+                    fontSize: {
+                      xs: theme.typography.fontSizes.xl,
+                      sm: theme.typography.fontSizes["2xl"],
+                    },
                   },
-                },
-              }}
-            >
-              {isDarkMode ? (
-                <WbSunnyOutlinedIcon />
-              ) : (
-                <Brightness2OutlinedIcon />
-              )}
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-              sx={{
-                "& .MuiSvgIcon-root": {
-                  fontSize: {
-                    xs: theme.typography.fontSizes.xl,
-                    sm: theme.typography.fontSizes["2xl"],
+                }}
+              >
+                <SearchIcon />
+              </IconButton>
+              <IconButton
+                onClick={toggleTheme}
+                size="large"
+                aria-label="show 17 new notifications"
+                color="inherit"
+                sx={{
+                  "& .MuiSvgIcon-root": {
+                    fontSize: {
+                      xs: theme.typography.fontSizes.xl,
+                      sm: theme.typography.fontSizes["2xl"],
+                    },
                   },
-                },
-              }}
-            >
-              <Badge badgeContent={17} color="error">
-                <NotificationsOutlinedIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-              sx={{
-                "& .MuiSvgIcon-root": {
-                  fontSize: {
-                    xs: theme.typography.fontSizes.xl,
-                    sm: theme.typography.fontSizes["2xl"],
+                }}
+              >
+                {isDarkMode ? (
+                  <WbSunnyOutlinedIcon />
+                ) : (
+                  <Brightness2OutlinedIcon />
+                )}
+              </IconButton>
+              <IconButton
+                size="large"
+                aria-label="show 17 new notifications"
+                color="inherit"
+                sx={{
+                  "& .MuiSvgIcon-root": {
+                    fontSize: {
+                      xs: theme.typography.fontSizes.xl,
+                      sm: theme.typography.fontSizes["2xl"],
+                    },
                   },
-                },
-              }}
-            >
-              <AccountCircle />
-            </IconButton>
-          </Box>
-          {/* <Box sx={{ display: { xs: "flex", md: "none" } }}>
+                }}
+              >
+                <Badge badgeContent={17} color="error">
+                  <NotificationsOutlinedIcon />
+                </Badge>
+              </IconButton>
+              <IconButton
+                size="large"
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+                sx={{
+                  "& .MuiSvgIcon-root": {
+                    fontSize: {
+                      xs: theme.typography.fontSizes.xl,
+                      sm: theme.typography.fontSizes["2xl"],
+                    },
+                  },
+                }}
+              >
+                <AccountCircle />
+              </IconButton>
+            </Box>
+            {/* <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="show more"
@@ -311,46 +313,48 @@ export default function PrimarySearchAppBar({ toggleTheme, isDarkMode }) {
               <MoreIcon />
             </IconButton>
           </Box> */}
-        </Toolbar>
-      </AppBar>
-      {/* {renderMobileMenu} */}
-      {renderMenu}
-      {showMobileSearch && (
-        <Box
-          sx={{
-            width: "100%",
-            padding: 2,
-            bgcolor: "background.paper",
-            borderTop: 1,
-            borderColor: "divider",
-            display: { md: "none" },
-          }}
-        >
-          <Search
+          </Toolbar>
+        </AppBar>
+        {/* {renderMobileMenu} */}
+        {renderMenu}
+        {showMobileSearch && (
+          <Box
             sx={{
-              borderRadius: theme.shape.borderRadius,
               width: "100%",
+              padding: 2,
+              bgcolor: "background.paper",
+              borderTop: 1,
+              borderColor: "divider",
+              display: { md: "none" },
             }}
           >
-            <SearchIconWrapper
-              sx={{
-                color: theme.palette.text.secondary,
-                zIndex: 50,
-              }}
-            >
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
+            <Search
               sx={{
                 borderRadius: theme.shape.borderRadius,
                 width: "100%",
               }}
-            />
-          </Search>
-        </Box>
-      )}
-    </Box>
+            >
+              <SearchIconWrapper
+                sx={{
+                  color: theme.palette.text.secondary,
+                  zIndex: 50,
+                }}
+              >
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ "aria-label": "search" }}
+                sx={{
+                  borderRadius: theme.shape.borderRadius,
+                  width: "100%",
+                }}
+              />
+            </Search>
+          </Box>
+        )}
+      </Box>
+      <Outlet />
+    </>
   );
 }

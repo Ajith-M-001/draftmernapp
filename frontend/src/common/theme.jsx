@@ -86,15 +86,29 @@ const DESIGN_TOKENS = {
 
   // Button Variants
   button: {
-    primary: {
-      backgroundColor: "#1976d2",
-      color: "#fff",
-      hoverBackgroundColor: "#1565c0",
+    dark: {
+      primary: {
+        backgroundColor: "#f5f5f5",
+        color: "#000",
+        hoverBackgroundColor: "#e0e0e0",
+      },
+      secondary: {
+        backgroundColor: "#e0e0e0",
+        color: "#000",
+        hoverBackgroundColor: "#bdbdbd",
+      },
     },
-    secondary: {
-      backgroundColor: "#f50057",
-      color: "#fff",
-      hoverBackgroundColor: "#c51162",
+    light: {
+      primary: {
+        backgroundColor: "#333333",
+        color: "#fff",
+        hoverBackgroundColor: "#4a4a4a",
+      },
+      secondary: {
+        backgroundColor: "#4a4a4a",
+        color: "#fff",
+        hoverBackgroundColor: "#616161",
+      },
     },
   },
 };
@@ -138,18 +152,19 @@ let lightTheme = createTheme({
     MuiButton: {
       styleOverrides: {
         containedPrimary: {
-          backgroundColor: DESIGN_TOKENS.button.primary.backgroundColor,
-          color: DESIGN_TOKENS.button.primary.color,
+          backgroundColor: DESIGN_TOKENS.button.light.primary.backgroundColor,
+          color: DESIGN_TOKENS.button.light.primary.color,
           "&:hover": {
-            backgroundColor: DESIGN_TOKENS.button.primary.hoverBackgroundColor,
+            backgroundColor:
+              DESIGN_TOKENS.button.light.primary.hoverBackgroundColor,
           },
         },
         containedSecondary: {
-          backgroundColor: DESIGN_TOKENS.button.secondary.backgroundColor,
-          color: DESIGN_TOKENS.button.secondary.color,
+          backgroundColor: DESIGN_TOKENS.button.light.secondary.backgroundColor,
+          color: DESIGN_TOKENS.button.light.secondary.color,
           "&:hover": {
             backgroundColor:
-              DESIGN_TOKENS.button.secondary.hoverBackgroundColor,
+              DESIGN_TOKENS.button.light.secondary.hoverBackgroundColor,
           },
         },
       },
@@ -177,9 +192,9 @@ const darkTheme = createTheme({
     fontWeightBold: DESIGN_TOKENS.typography.fontWeights.bold,
     fontSizes: DESIGN_TOKENS.typography.fontSizes,
   },
-  spacing: 8,
+  spacing: 4,
   shape: {
-    borderRadius: 8,
+    borderRadius: 4,
   },
   components: {
     MuiInputBase: {
@@ -196,18 +211,18 @@ const darkTheme = createTheme({
     MuiButton: {
       styleOverrides: {
         containedPrimary: {
-          backgroundColor: DESIGN_TOKENS.button.primary.backgroundColor,
-          color: DESIGN_TOKENS.button.primary.color,
+          backgroundColor: DESIGN_TOKENS.button.dark.primary.backgroundColor,
+          color: DESIGN_TOKENS.button.dark.primary.color,
           "&:hover": {
-            backgroundColor: DESIGN_TOKENS.button.primary.hoverBackgroundColor,
+            backgroundColor: DESIGN_TOKENS.button.dark.primary.hoverBackgroundColor,
           },
         },
         containedSecondary: {
-          backgroundColor: DESIGN_TOKENS.button.secondary.backgroundColor,
-          color: DESIGN_TOKENS.button.secondary.color,
+          backgroundColor: DESIGN_TOKENS.button.dark.secondary.backgroundColor,
+          color: DESIGN_TOKENS.button.dark.secondary.color,
           "&:hover": {
             backgroundColor:
-              DESIGN_TOKENS.button.secondary.hoverBackgroundColor,
+              DESIGN_TOKENS.button.dark.secondary.hoverBackgroundColor,
           },
         },
       },
